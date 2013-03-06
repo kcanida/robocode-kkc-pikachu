@@ -50,8 +50,8 @@ A typical output from one of these commands might be:
 [INFO] ------------------------------------------------------------------------
 [INFO] 
 [INFO] --- maven-install-plugin:2.3.1:install-file (default-cli) @ standalone-pom ---
-[INFO] Installing /Users/johnson/robocode/libs/robocode.jar to /Users/johnson/.m2/repository/net/sourceforge/robocode/robocode/1.7.4.4/robocode-1.7.4.4.jar
-[INFO] Installing /var/folders/__/qq1ydtj56n3fxtccjh9k6dk80000gn/T/mvninstall1027288217865601684.pom to /Users/johnson/.m2/repository/net/sourceforge/robocode/robocode/1.7.4.4/robocode-1.7.4.4.pom
+[INFO] Installing C:/robocode/libs/robocode.jar to C:/robocde/.m2/repository/net/sourceforge/robocode/robocode/1.7.4.4/robocode-1.7.4.4.jar
+[INFO] Installing /var/folders/__/qq1ydtj56n3fxtccjh9k6dk80000gn/T/mvninstall1027288217865601684.pom to C:/robocode/.m2/repository/net/sourceforge/robocode/robocode/1.7.4.4/robocode-1.7.4.4.pom
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
@@ -75,7 +75,8 @@ Note that this approach does not remove these files from the robocode installati
 Here is an example of the command line used to build and test the system, along with the output.
 
 ```shell
-[~/projecthosting/github/robocode-kkc-pikachu]-> mvn -Drobocode.home=/Users/johnson/robocode test
+[~/Users/Kellie/github/robocode-kkc-pikachu]-> mvn -Drobocode.home=C:\robocode test
+
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
@@ -84,10 +85,10 @@ Here is an example of the command line used to build and test the system, along 
 [INFO] 
 [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ pikachu ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /Users/johnson/projecthosting/github/robocode-kkc-pikachu/src/main/resources
+[INFO] skip non existing resourceDirectory /Users/Kellie/github/robocode-kkc-pikachu/src/main/resources
 [INFO] 
 [INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ pikachu ---
-[INFO] Compiling 1 source file to /Users/johnson/projecthosting/github/robocode-kkc-pikachu/target/classes
+[INFO] Compiling 1 source file to /Users/Kellie/github/robocode-kkc-pikachu/target/classes
 [INFO] 
 [INFO] --- maven-resources-plugin:2.6:copy-resources (copy-resources) @ pikachu ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
@@ -95,18 +96,18 @@ Here is an example of the command line used to build and test the system, along 
 [INFO] 
 [INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ pikachu---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /Users/johnson/projecthosting/github/robocode-kkc-pikachu/src/test/resources
+[INFO] skip non existing resourceDirectory /Users/Kellie/github/robocode-kkc-pikachu/src/test/resources
 [INFO] 
 [INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ pikachu ---
-[INFO] Compiling 3 source files to /Users/johnson/projecthosting/github/robocode-kkc-pikachu/target/test-classes
+[INFO] Compiling 3 source files to /Users/Kellie/github/robocode-kkc-pikachu/target/test-classes
 [INFO] 
 [INFO] --- maven-surefire-plugin:2.10:test (default-test) @ pikachu ---
-[INFO] Surefire report directory: /Users/johnson/projecthosting/github/robocode-kkc-pikachu/target/surefire-reports
+[INFO] Surefire report directory: /Users/Kellie/github/robocode-kkc-pikachu/target/surefire-reports
 
 -------------------------------------------------------
  T E S T S
 -------------------------------------------------------
-Running pmj.TestDaCruzerFiring
+Running kkc.TestPikachuFiring
 Loaded net.sf.robocode.api
 Loaded net.sf.robocode.core
 Loaded net.sf.robocode.battle
@@ -122,7 +123,7 @@ Round 1 cleaning up.
 (test output deleted)
 
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.924 sec
-Running pmj.TestDaCruzerMovement
+Running kkc.TestPikachuMovement
 Preparing battle...
 ----------------------
 Round 1 initializing..
@@ -133,7 +134,7 @@ Round 1 cleaning up.
 (test output deleted)
 
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.693 sec
-Running pmj.TestDaCruzerVersusSittingDuck
+Running kkc.TestPikachuSittingDuck
 Preparing battle...
 ----------------------
 Round 1 initializing..
@@ -161,7 +162,7 @@ Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
 To remove the robot from the robocode installation, invoke the clean target with the -D property:
 
 ```shell
-[~/projecthosting/github/robocode-pmj-pikachu]-> mvn -Drobocode.home=/Users/johnson/robocode clean
+[~/Users/Kellie/github/robocode-kkc-pikachu]-> mvn -Drobocode.home=C:\robocode clean
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
@@ -169,8 +170,8 @@ To remove the robot from the robocode installation, invoke the clean target with
 [INFO] ------------------------------------------------------------------------
 [INFO] 
 [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ pikachu ---
-[INFO] Deleting /Users/johnson/projecthosting/github/robocode-pmj-pikachu/target
-[INFO] Deleting /Users/johnson/robocode/robots/pmj (includes = [], excludes = [])
+[INFO] Deleting /Users/Kellie/github/robocode-kkc-pikachu/target
+[INFO] Deleting /Users/Kellie/robocode/robots/kkc (includes = [], excludes = [])
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
