@@ -192,7 +192,7 @@ To run the kkc.pikachu robot within Eclipse, you must configure Eclipse and Robo
 To run the test cases, edit the Run configuration for each test to include -Drobocode.home=robocodeHomeDirectory as a VM argument. 
 
 7. Use this project as a template for your own development
-----------------------------------------------------------
+---------------------------------------------------------
 
 Once you have completed the above steps, you are ready to use this project for your own development. To do this:
   * Duplicate the robocode-kkc-pikachu directory, and rename it with your own robot's name.
