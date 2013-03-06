@@ -61,3 +61,11 @@ target/*
 ###########
 doc/*
 package.html
+
+#Robocode 
+###########
+${robocode.home}/*
+
+#C
+###########
+C/*
