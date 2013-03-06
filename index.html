@@ -39,9 +39,11 @@
 
 <p>robocode-kkc-pikachu is a <a href="http://robocode.sourceforge.net/">Robocode</a> robot implementing the following strategy</p>
 
-<p><strong>Movement:</strong>
-<strong>Targeting:</strong>
-<strong>Firing</strong></p>
+<p><strong>Movement:</strong> Pikachu robot always stays at a 90 degree angle to the enemy robot.  It tracks the energy level of the enemy and when there is a small drop in energy it assumes the enemy just fired a bullet so Pikachu changes its direction.  </p>
+
+<p><strong>Targeting:</strong> Pikachu uses its radar to scan for the enemy robot. It continually oscillates the radar so it can continually track the enemy.  </p>
+
+<p><strong>Firing</strong> Pikachu uses its radar to calculate where the enemy is and aims its gun at the enemy. Pikachu then fires a bullet at the enemy with power based on the distance of the enemy. The further the enemy from Pikachu, the weaker the power of the bullet fired.</p>
 
 <h2>About the project</h2>
 
