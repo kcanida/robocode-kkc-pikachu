@@ -30,20 +30,21 @@ public class Pikachu extends AdvancedRobot {
         new Color(0,0,0), new Color(255,255,1), Color.pink);
     
     //Do an initial radar scan of entire field to pick up our enemy robot.
-    setTurnRadarRight(360*scanDirection);
+    setTurnRadarRight(360 * scanDirection);
     
   }
   
+  @Override
   public void onScannedRobot(ScannedRobotEvent event) {
     //Always stay at 90 degree angle to the enemy.
-    setTurnRight(event.getBearing() + 90 - 30*directionToMove);
+    setTurnRight(event.getBearing() + 90 - 30 * directionToMove);
     
     //If the enemy has a drop in energy of <=3 we assume the enemy has fired so we move.
     double changeInEnergy = energyOfEnemy - event.getEnergy();
-    if(changeInEnergy > 0 && changeInEnergy <= 3) {
+    if (changeInEnergy > 0 && changeInEnergy <= 3) {
       //Our robot changes direction and moves closer towards enemy.
       directionToMove = -directionToMove;
-      setAhead((event.getDistance()/4 + 25)* directionToMove);
+      setAhead((event.getDistance() / 4 + 25) * directionToMove);
     }
     
     //Changes scanDirection so that radar oscillates. 
@@ -51,16 +52,17 @@ public class Pikachu extends AdvancedRobot {
     setTurnRadarRight(360 * scanDirection);
     
     //Turn gun to face enemy.  Normalize angle so gun turns the shortest distance.
-    setTurnGunRight(normalRelativeAngleDegrees(getHeading() - getGunHeading() + event.getBearing()));
+    setTurnGunRight(normalRelativeAngleDegrees(
+                    getHeading() - getGunHeading() + event.getBearing()));
     
     //Fire at target with power varying with distance.
-    if(event.getDistance() < 10 ) {
+    if (event.getDistance() < 10 ) {
       fire(2);
     }   
-    else if(event.getDistance() < 50) {
+    else if (event.getDistance() < 50) {
       fire(1.5);
     }
-    else if(event.getDistance() < 200) {
+    else if (event.getDistance() < 200) {
       fire(1);
     }
     else {

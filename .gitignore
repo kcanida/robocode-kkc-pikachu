@@ -60,4 +60,4 @@ target/*
 #JavaDocs
 ###########
 doc/*
-*.html
+package.html
