@@ -6,9 +6,9 @@
   <!-- Edit the following lines to specify your own robocode robot. -->
   <!-- Note that groupId is used to determine the directory to delete in ${robocode.home}/robots -->
   <groupId>kkc</groupId>
-  <artifactId>kellierobot</artifactId>
+  <artifactId>pikachu</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>kellierobot</name>
+  <name>pikachu</name>
   <url></url>
 
   <properties>
