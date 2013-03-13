@@ -1,6 +1,6 @@
 package kkc;
 
-  import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import robocode.control.testing.RobotTestBed;
 import robocode.BattleResults;
@@ -19,7 +19,7 @@ import robocode.control.events.TurnEndedEvent;
   public class TestPikachuVersusTracker extends RobotTestBed {
 
     /**
-     * Specifies that Tracker and KellieRobot are to be matched up in this test case.
+     * Specifies that Tracker and Pikachu are to be matched up in this test case.
      * @return The comma-delimited list of robots in this match.
      */
     @Override
