@@ -2,75 +2,106 @@ package kkc;
 
 import java.awt.Color;
 import robocode.AdvancedRobot;
+import robocode.HitRobotEvent;
 import robocode.ScannedRobotEvent;
 import static robocode.util.Utils.normalRelativeAngleDegrees;
 
 /**
  * Pikachu is a robot in robocode that tracks enemy robot's energy levels.
- * If the enemy has a drop in energy we assume the enemy fired a bullet and 
+ * If the enemy has a drop in energy we assume the enemy fired a bullet and
  * our robot changes directions to avoid the bullet.  Then our robot scans
  * its radar to lock the gun on the enemy and fire bullet with power varying
  * according to distance of enemy.
- * 
+ *
  * @author Kellie Canida
  *
  */
 public class Pikachu extends AdvancedRobot {
-  
-  double energyOfEnemy = 100; //Initial energy of enemy at start of battle
-  int directionToMove = 1; //Direction our robot will move
-  int gunDirection = 1; //Initialized to 1 to create oscillating effect
-  int scanDirection = 1; //Initialized to 1 to create oscillating effect
-  
-  
+
+  /**Initial energy of enemy at start of battle.*/
+  private double energyOfEnemy = 100;
+  /**Direction our robot will move.*/
+  private int directionToMove = 1;
+  /**Initialized to 1 to create oscillating effect.*/
+  private int scanDirection = 1;
+  /**Distance of enemy from our robot.*/
+  private double distance = 0;
+
+  /**
+   * Main run function.
+   */
   @Override
-  public void run() {
+  public final void run() {
     //Set the color of our robot
-    setColors(new Color(229,218,42), new Color(231,74,69), 
-        new Color(0,0,0), new Color(255,255,1), Color.pink);
+    setColors(new Color(229, 218, 42), new Color(231, 74, 69),
+        Color.black, new Color(255, 255, 1), Color.pink);
     
     //Do an initial radar scan of entire field to pick up our enemy robot.
     setTurnRadarRight(360 * scanDirection);
-    
   }
-  
+
+  /**
+   * OnScannedRobot, Pikachu robot will determine if a bullet is
+   * fired by the enemy. Ifa bullet is fired, Pikachu will change
+   * direction then use its radar to target the enemy. Pikachu will
+   * aim its gun at the enemy robot and then fire a bullet with varying
+   * power according to distance of enemy.
+   *
+   *@param event when our robot scans an enemy robot.
+   */
   @Override
-  public void onScannedRobot(ScannedRobotEvent event) {
+  public final void onScannedRobot(final ScannedRobotEvent event) {
     //Always stay at 90 degree angle to the enemy.
     setTurnRight(event.getBearing() + 90 - 30 * directionToMove);
-    
-    //If the enemy has a drop in energy of <=3 we assume the enemy has fired so we move.
+
+    //If the enemy has a drop in energy of <=3 we assume the
+    //enemy has fired so we move.
     double changeInEnergy = energyOfEnemy - event.getEnergy();
     if (changeInEnergy > 0 && changeInEnergy <= 3) {
       //Our robot changes direction and moves closer towards enemy.
       directionToMove = -directionToMove;
-      setAhead((event.getDistance() / 4 + 25) * directionToMove);
+      setAhead((event.getDistance() / 4 + 27) * directionToMove);
     }
-    
-    //Changes scanDirection so that radar oscillates. 
-    scanDirection = -scanDirection; 
+
+    //Changes scanDirection so that radar oscillates.
+    scanDirection = -scanDirection;
     setTurnRadarRight(360 * scanDirection);
-    
-    //Turn gun to face enemy.  Normalize angle so gun turns the shortest distance.
+
+    //Turn gun to face enemy.  Normalize angle so gun
+    //turns the shortest distance.
     setTurnGunRight(normalRelativeAngleDegrees(
                     getHeading() - getGunHeading() + event.getBearing()));
-    
+
+    //Update distance with current distance of enemy
+    distance = event.getDistance();
+
     //Fire at target with power varying with distance.
-    if (event.getDistance() < 10 ) {
+    if (distance < 50 ) {
       fire(2);
-    }   
-    else if (event.getDistance() < 50) {
+    } 
+    else if (distance < 100) {
       fire(1.5);
-    }
-    else if (event.getDistance() < 200) {
+    } 
+    else if (distance < 200) {
       fire(1);
-    }
+    } 
     else {
-      doNothing();
+      fire(0.1);
     }
-    
     //Update the energy level of the enemy.
     energyOfEnemy = event.getEnergy();
-    
+
+  }
+
+  /**
+   * OnHitRobot, Pikachu should change direction.
+   * 
+   * @param event when our robot hits another robot
+   */
+  @Override
+  public final void onHitRobot(final HitRobotEvent event) {
+    directionToMove = -directionToMove;
+    setAhead(20 * directionToMove);
+
   }
 }
